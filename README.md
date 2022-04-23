@@ -586,7 +586,8 @@ void shrink_image ()
 		cout<<"invalid choice"<<endl;
 
 	}
-	 
+					     
+	 image2toimage();
 }
 
 //__________________________________
