@@ -3,7 +3,7 @@
 
 // FCAI – Programming 1 – 2022 - Assignment 3 
 // Program Name: bonus_photoshop_20210123_20210383.cpp 
-// Program Description: photoshop
+// Program Description:filtering RGB images photoshop
 // Last Modification Date: 21/4/2022 
 // Author1 and ID and Group: 20210123 , A 
 // Author2 and ID and Group: 20210383 , A 
@@ -52,132 +52,13 @@ int pixel_x=0,pixel_y=0;
     { { -1, -2, -1 },
       { 0,  0,  0 },
       { 1,  2,  1 } };
+	
+	
 int main()
 {
-   char choice;
 
-  loadImage();
-  cout<<"Please select a filter to apply or 0 to exit:"<<endl;
-  cout<<" main menu : \n1-black and white image \n2-invert image \n3-merge image \n4-flip image \n5-rotate image \n6-darken and lighten image\n7- Detect Image Edges\n8- Enlarge Image\n9- Shrink Image\na- Mirror 1/2 Image\nb- Shuffle Image\nc- Blur Image\ns- Save the image to a file\n"<<endl;
-
-  cin>>choice;
-
-  switch(choice)
-  {
-  	case '1':
-        filter1();
-        cout<<"do you want to make any other changes ?\n1-yes\n2-no,just save "<<endl;
-        cin>>change;
-        if (change==1)
-            main_menu();
-        saveImage();
-        break;
-//____________________________________________________________________________________________
-	case '2':
-        invert_image();
-        cout<<"do you want to make any other changes ?\n1-yes\n2-no,just save "<<endl;
-        cin>>change;
-        if (change==1)
-            main_menu();
-        saveImage();
-        break;
-//_____________________________________________________________________________________________
-	case '3':
-        merge_images();
-        cout<<"do you want to make any other changes ?\n1-yes\n2-no,just save "<<endl;
-        cin>>change;
-        if (change==1)
-            main_menu();
-        saveImage();
-        break;
-//___________________________________________________________________________________________
-	case '4':
-        filter4();
-        cout<<"do you want to make any other changes ?\n1-yes\n2-no,just save "<<endl;
-        cin>>change;
-        if (change==1)
-            main_menu();
-        saveImage();
-        break;
-//_________________________________________________________________________________________________
-	case '5':
-		rotate_image();
-		cout<<"do you want to make any other changes ?\n1-yes\n2-no,just save "<<endl;
-        cin>>change;
-        if (change==1)
-            main_menu();
-        saveImage();
-        break;
-//_________________________________________________________________________________________________
-  	case '6':
-        dark_light();
-        cout<<"do you want to make any other changes ?\n1-yes\n2-no,just save "<<endl;
-        cin>>change;
-        if (change==1)
-            main_menu();
-        saveImage();
-        break;
-//___________________________________________________________________________________________________
-    case '7':
-        edges();
-        cout<<"do you want to make any other changes ?\n1-yes\n2-no,just save "<<endl;
-        cin>>change;
-        if (change==1)
-            main_menu();
-        saveImage();
-        break;
-//_____________________________________________________________________________
-    case '8':
-        enlarge_image();
-        cout<<"do you want to make any other changes ?\n1-yes\n2-no,just save "<<endl;
-        cin>>change;
-        if (change==1)
-            main_menu();
-        saveImage();
-        break;
-//_______________________________________________________________________________
-    case '9':
-        shrink_image();
-        cout<<"do you want to make any other changes ?\n1-yes\n2-no,just save "<<endl;
-        cin>>change;
-        if (change==1)
-            main_menu();
-        saveImage();
-        break;
-//_____________________________________________________________________________________
-    case 'a':
-        filtera();
-        cout<<"do you want to make any other changes ?\n1-yes\n2-no,just save "<<endl;
-        cin>>change;
-        if (change==1)
-            main_menu();
-        saveImage();
-        break;
-//________________________________________________________________________________________
-    case  's':
-    saveImage();
-  	break;
-//________________________________________________________________________________________
-  	case 'b':
-        shuffle_image();
-        cout<<"do you want to make any other changes ?\n1-yes\n2-no,just save "<<endl;
-        cin>>change;
-        if (change==1)
-            main_menu();
-        saveImage();
-        break;
-//________________________________________________________________________________________
-    case 'c':
-        blur();
-        cout<<"do you want to make any other changes ?\n1-yes\n2-no,just save "<<endl;
-        cin>>change;
-        if (change==1)
-            main_menu();
-        saveImage();
-        break;
-
-  }
 }
+	
 void loadImage (){
     char imageFileName[100];
 
@@ -189,6 +70,9 @@ void loadImage (){
    strcat (imageFileName, ".bmp");
    readRGBBMP(imageFileName, image);
 }
+	
+//_________________________________
+	
 void saveImage () {
    char imageFileName[100];
 
@@ -200,6 +84,8 @@ void saveImage () {
    strcat (imageFileName, ".bmp");
    writeRGBBMP(imageFileName, image);
 }
+//______________________________________
+	
 void filter1()
 {
     for (int i = 0; i < SIZE;i++){
