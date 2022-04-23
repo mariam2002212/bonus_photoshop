@@ -56,9 +56,131 @@ int pixel_x=0,pixel_y=0;
 	
 int main()
 {
+char choice;
 
+  loadImage();
+  cout<<"Please select a filter to apply or 0 to exit:"<<endl;
+  cout<<" main menu : \n1-black and white image \n2-invert image \n3-merge image \n4-flip image \n5-rotate image \n6-darken and lighten image\n7- Detect Image Edges\n8- Enlarge Image\n9- Shrink Image\na- Mirror 1/2 Image\nb- Shuffle Image\nc- Blur Image\ns- Save the image to a file\n0- Exit\n"<<endl;
+
+  cin>>choice;
+
+  switch(choice)
+  {
+  	case '1':
+        filter1();
+        cout<<"do you want to make any other changes ?\n1-yes\n2-no,just save "<<endl;
+        cin>>change;
+        if (change==1)
+            main_menu();
+        saveImage();
+        break;
+//________________________________
+	case '2':
+        invert_image();
+        cout<<"do you want to make any other changes ?\n1-yes\n2-no,just save "<<endl;
+        cin>>change;
+        if (change==1)
+            main_menu();
+        saveImage();
+        break;
+//_______________________________
+	case '3':
+        merge_images();
+        cout<<"do you want to make any other changes ?\n1-yes\n2-no,just save "<<endl;
+        cin>>change;
+        if (change==1)
+            main_menu();
+        saveImage();
+        break;
+//_______________________________
+	case '4':
+        filter4();
+        cout<<"do you want to make any other changes ?\n1-yes\n2-no,just save "<<endl;
+        cin>>change;
+        if (change==1)
+            main_menu();
+        saveImage();
+        break;
+//_________________________________
+	case '5':
+		rotate_image();
+		cout<<"do you want to make any other changes ?\n1-yes\n2-no,just save "<<endl;
+        cin>>change;
+        if (change==1)
+            main_menu();
+        saveImage();
+        break;
+//_________________________________
+  	case '6':
+        dark_light();
+        cout<<"do you want to make any other changes ?\n1-yes\n2-no,just save "<<endl;
+        cin>>change;
+        if (change==1)
+            main_menu();
+        saveImage();
+        break;
+//_________________________________
+    case '7':
+        edges();
+        cout<<"do you want to make any other changes ?\n1-yes\n2-no,just save "<<endl;
+        cin>>change;
+        if (change==1)
+            main_menu();
+        saveImage();
+        break;
+//___________________________
+    case '8':
+        enlarge_image();
+        cout<<"do you want to make any other changes ?\n1-yes\n2-no,just save "<<endl;
+        cin>>change;
+        if (change==1)
+            main_menu();
+        saveImage();
+        break;
+//___________________________
+    case '9':
+        shrink_image();
+        cout<<"do you want to make any other changes ?\n1-yes\n2-no,just save "<<endl;
+        cin>>change;
+        if (change==1)
+            main_menu();
+        saveImage();
+        break;
+//_____________________________
+    case 'a':
+        filtera();
+        cout<<"do you want to make any other changes ?\n1-yes\n2-no,just save "<<endl;
+        cin>>change;
+        if (change==1)
+            main_menu();
+        saveImage();
+        break;
+//______________________________
+    case  's':
+    saveImage();
+  	break;
+//______________________________
+  	case 'b':
+        shuffle_image();
+        cout<<"do you want to make any other changes ?\n1-yes\n2-no,just save "<<endl;
+        cin>>change;
+        if (change==1)
+            main_menu();
+        saveImage();
+        break;
+//______________________________
+    case 'c':
+        blur();
+        cout<<"do you want to make any other changes ?\n1-yes\n2-no,just save "<<endl;
+        cin>>change;
+        if (change==1)
+            main_menu();
+        saveImage();
+        break;
+
+  }
 }
-	
+//__________________________________	
 void loadImage (){
     char imageFileName[100];
 
