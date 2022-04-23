@@ -3,7 +3,7 @@
 
 // FCAI – Programming 1 – 2022 - Assignment 3 
 // Program Name: bonus_photoshop_20210123_20210383.cpp 
-// Program Description: photoshop
+// Program Description:filtering RGB images photoshop
 // Last Modification Date: 21/4/2022 
 // Author1 and ID and Group: 20210123 , A 
 // Author2 and ID and Group: 20210383 , A 
@@ -49,12 +49,13 @@ int pixel_x=0,pixel_y=0;
     { { -1, -2, -1 },
       { 0,  0,  0 },
       { 1,  2,  1 } };
+	
+	
 int main()
 {
-   loadImage();
-   enlarge_image();
-   saveImage2();
+
 }
+	
 void loadImage (){
     char imageFileName[100];
 
@@ -66,6 +67,9 @@ void loadImage (){
    strcat (imageFileName, ".bmp");
    readRGBBMP(imageFileName, image);
 }
+	
+//_________________________________
+	
 void saveImage () {
    char imageFileName[100];
 
@@ -77,6 +81,8 @@ void saveImage () {
    strcat (imageFileName, ".bmp");
    writeRGBBMP(imageFileName, image);
 }
+//______________________________________
+	
 void filter1()
 {
     for (int i = 0; i < SIZE;i++){
