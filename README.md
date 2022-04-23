@@ -23,10 +23,13 @@ unsigned char image3 [SIZE][SIZE][RGB];
 void loadImage ();
 void loadImage2 ();
 void saveImage ();
+void shuffle_image();
 void saveImage2 ();
 void rotate_image ();
+void main_menu();
 void rotate90();
 void invert_image();
+void image2toimage();
 void dark_light();
 void merge_images();
 void filter4();
@@ -557,8 +560,190 @@ void enlarge_image()
                     } 
                 }
             }
+	image2toimage();
 }
 
 //_______________________
+void image2toimage(){
+    for (int i = 0; i <SIZE;i++){
+        for (int j =0; (j<SIZE);j++){
+                for (int k=0;k<RGB;k++){
+                    image[i][j][k]=image2[i][j][k];
+                }
+    }}}
+//______________________________
+void shuffle_image()
+{
 
-   
+string order;
+    int r, c;
+    cout << "enter new order of quarters: ";
+    cin >> order;
+
+
+    for (int i = 0; i < 4; ++i) {
+        if (i == 0 || i == 1) {
+            r = 0;
+        } else {
+            r = 128;
+        }
+        if (i == 0 || i == 2) {
+            c = 0;
+        } else {
+            c = 128;
+        }
+        char x = order[i];
+        int k = (int) x;
+        if (k - 48 == 1){
+            for (int o = 0, m = r; o < 128; ++o , ++m) {
+                for (int j = 0 , n = c; j < 128; ++j , ++n) {
+                	for (int k =0 ;k < RGB ; k++)
+                	{
+                    image2[m][n][k] = image[o][j][k];
+                    }
+                }
+            }
+        } else if (k - 48 == 2) {
+            for (int o = 0, m = r; o < 128; ++o, ++m) {
+                for (int j = 128, n = c; j < 256; ++j, ++n) {
+                		for (int k =0 ;k < RGB ; k++)
+                	{
+                    image2[m][n][k] = image[o][j][k];
+                    }
+                }
+            }
+        }else if (k - 48 == 3){
+            for (int o = 128, m = r; o < 256; ++o , ++m) {
+                for (int j = 0 , n = c; j < 128; ++j , ++n) {
+                		for (int k =0 ;k < RGB ; k++)
+                	{
+                    image2[m][n][k] = image[o][j][k];
+                    }
+                }
+            }
+        } else if (k - 48 == 4){
+            for (int o = 128, m = r; o < 256; ++o , ++m) {
+                for (int j = 128 , n = c; j < 256; ++j , ++n) {
+                		for (int k =0 ;k < RGB ; k++)
+                	{
+                    image2[m][n][k] = image[o][j][k];
+                    }
+                }
+            }
+        }
+    }
+    image2toimage();
+}
+//_________________________________________
+	void main_menu()
+{
+    char choice;
+    cout<<"Please select a filter to apply or 0 to exit:"<<endl;
+    cout<<" main menu : \n1-black and white image \n2-invert image \n3-merge image \n4-flip image \n5-rotate image \n6-darken and lighten image\n7- Detect Image Edges\n8- Enlarge Image\n9- Shrink Image\na- Mirror 1/2 Image\nb- Shuffle Image\nc- Blur Image\ns- Save the image to a file\n"<<endl;
+
+    cin>>choice;
+
+  switch(choice)
+  {
+  	case '1':
+        filter1();
+        cout<<"do you want to make any other changes ?\n1-yes\n2-no,just save "<<endl;
+        cin>>change;
+        if (change==1)
+            main_menu();
+        break;
+//____________________________________________________________________________________________
+	case '2':
+        invert_image();
+        cout<<"do you want to make any other changes ?\n1-yes\n2-no,just save "<<endl;
+        cin>>change;
+        if (change==1)
+            main_menu();
+        break;
+//_____________________________________________________________________________________________
+	case '3':
+        merge_images();
+        cout<<"do you want to make any other changes ?\n1-yes\n2-no,just save "<<endl;
+        cin>>change;
+        if (change==1)
+            main_menu();
+        break;
+//___________________________________________________________________________________________
+	case '4':
+        filter4();
+        cout<<"do you want to make any other changes ?\n1-yes\n2-no,just save "<<endl;
+        cin>>change;
+        if (change==1)
+            main_menu();
+        break;
+//_________________________________________________________________________________________________
+	case '5':
+		rotate_image();
+		cout<<"do you want to make any other changes ?\n1-yes\n2-no,just save "<<endl;
+        cin>>change;
+        if (change==1)
+            main_menu();
+        break;
+//_________________________________________________________________________________________________
+  	case '6':
+        dark_light();
+        cout<<"do you want to make any other changes ?\n1-yes\n2-no,just save "<<endl;
+        cin>>change;
+        if (change==1)
+            main_menu();
+        break;
+//___________________________________________________________________________________________________
+    case '7':
+        edges();
+        cout<<"do you want to make any other changes ?\n1-yes\n2-no,just save "<<endl;
+        cin>>change;
+        if (change==1)
+            main_menu();
+        break;
+//_____________________________________________________________________________
+    case '8':
+        enlarge_image();
+        cout<<"do you want to make any other changes ?\n1-yes\n2-no,just save "<<endl;
+        cin>>change;
+        if (change==1)
+            main_menu();
+        break;
+//_______________________________________________________________________________
+    case '9':
+        shrink_image();
+        cout<<"do you want to make any other changes ?\n1-yes\n2-no,just save "<<endl;
+        cin>>change;
+        if (change==1)
+            main_menu();
+        break;
+//_____________________________________________________________________________________
+    case 'a':
+        filtera();
+        cout<<"do you want to make any other changes ?\n1-yes\n2-no,just save "<<endl;
+        cin>>change;
+        if (change==1)
+            main_menu();
+        break;
+//________________________________________________________________________________________
+    case  's':
+    saveImage();
+  	break;
+//________________________________________________________________________________________
+  	case 'b':
+        shuffle_image();
+        cout<<"do you want to make any other changes ?\n1-yes\n2-no,just save "<<endl;
+        cin>>change;
+        if (change==1)
+            main_menu();
+        break;
+//________________________________________________________________________________________
+    case 'c':
+        blur();
+        cout<<"do you want to make any other changes ?\n1-yes\n2-no,just save "<<endl;
+        cin>>change;
+        if (change==1)
+            main_menu();
+        break;
+
+  }
+}					   
